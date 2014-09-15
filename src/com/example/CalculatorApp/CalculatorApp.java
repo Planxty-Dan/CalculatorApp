@@ -4,7 +4,9 @@ package com.example.CalculatorApp;
  * Created by admin on 9/13/14.
  */
 import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
+import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class CalculatorApp {
@@ -25,9 +27,20 @@ public class CalculatorApp {
                 "The square root symbol is entered by holding 'alt' and 'v'");
 
         while (progLoop = true) {
-            System.out.println("\nPlease enter first number:");
-            
+            firstNum =getFirstNum();
+
         }
 
+    }
+    public static double getFirstNum () {
+        Scanner getNumScan = new Scanner(System.in);
+        for (;;)
+            try {
+                System.out.println("\nPlease enter first number:");
+                double firstNum = getNumScan.nextDouble();
+                return firstNum;
+        }   catch (InputMismatchException e){
+                System.out.println("Not a valid number entry, please try again.\n");
+        }
     }
 }
